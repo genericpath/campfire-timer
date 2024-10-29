@@ -18,7 +18,7 @@ public class CampfireOverlay extends Overlay {
 
     NumberFormat format = new DecimalFormat("#");
 
-    final int FIRE_MAX_TICKS = 200;
+    final int FIRE_MAX_TICKS = 300;
     final int FIRE_MIN_TICKS = 100;
 
     @Inject
@@ -54,12 +54,12 @@ public class CampfireOverlay extends Overlay {
         }
 
         String timeLeftString = String.valueOf(format.format(timeLeft));
-
-        final Point canvasPoint = campfireLocation.getFire().getCanvasTextLocation(graphics, timeLeftString, 40);
+        String tendingCount = String.valueOf(campfireLocation.getPlayersTendingCount());
+        final Point canvasPoint = campfireLocation.getFire().getCanvasTextLocation(graphics, tendingCount, 40);
 
         if (canvasPoint != null && (timeLeft >= 0))
         {
-            OverlayUtil.renderTextLocation(graphics, canvasPoint, timeLeftString, timerColor);
+            OverlayUtil.renderTextLocation(graphics, canvasPoint, tendingCount, timerColor);
         }
     }
 }
